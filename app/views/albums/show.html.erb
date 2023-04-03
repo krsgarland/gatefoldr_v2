@@ -1,0 +1,9 @@
+<h1><%= @album.title %> </h1>
+<p><%= @album.artist %> </p>
+<p><%= @album.release_year %> </p>
+<div>
+    <%= image_tag @album.image_path, style: "border: 1px solid black" %>
+    </div>
+
+<%= link_to "Edit", edit_album_path(@album)%>
+<%= button_to "Destroy", @album, method: :delete%>

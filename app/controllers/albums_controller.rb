@@ -1,9 +1,15 @@
 class AlbumsController < ApplicationController
+    before_action :set_album, only: [:show, :edit, :update, :destroy]
 
     #GET - Show all albums
     def index 
         @albums = Album.all
     end
+    #GET - show specific album
+    def show 
+        
+    end
+
     #GET - Request page with form to create new album
     def new
         @album = Album.new
@@ -22,21 +28,30 @@ class AlbumsController < ApplicationController
     end
 end
     #GET - edit album
-    def 
-        album = Album.find(params[:id])
+    def edit
+
     end
 
     def update 
-        @album = Album.find(params[:id])
 
         if @album.update(album_params)
-            redirect_to albums_path
+            redirect_to @album
         else
             render :edit, status: :unprocessable_entity
         end
     end
 
+    def destroy
+        @album.destroy
+        redirect_to albums_path
+    end
+
     private
     def album_params
-        params.required(:album).permit(:title, :artist, :release_year, :image_path)
+        params.require(:album).permit(:title, :artist, :release_year, :image_path)
     end
+
+    def set_album
+        @album = Album.find(params[:id])
+    end
+end
