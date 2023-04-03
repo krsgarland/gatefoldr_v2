@@ -1,0 +1,30 @@
+<%= form_with(model: @album) do |form| %>
+    <% if @album.errors.any? %>
+    <% @album.errors.full_messages.each do |message| %>
+    <div>
+    <%= message %>
+    </div>
+    <% end %>
+<% end %>
+<div>
+<%= form.label :title %>
+<%= form.text_field :title %>
+</div>
+
+<div>
+<%= form.label :artist %>
+<%= form.text_field :artist %>
+</div>
+
+<div>
+<%= form.label :release_year %>
+<%= form.number_field :release_year %>
+</div>
+
+<div>
+<%= form.label :image_path %>
+<%= form.text_field :image_path %>
+</div>
+
+<%= form.submit %>
+<% end %>

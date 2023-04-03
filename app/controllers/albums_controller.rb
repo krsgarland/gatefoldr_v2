@@ -21,9 +21,22 @@ class AlbumsController < ApplicationController
         render :new, status: :unprocessable_entity
     end
 end
+    #GET - edit album
+    def 
+        album = Album.find(params[:id])
+    end
+
+    def update 
+        @album = Album.find(params[:id])
+
+        if @album.update(album_params)
+            redirect_to albums_path
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
 
     private
     def album_params
         params.required(:album).permit(:title, :artist, :release_year, :image_path)
     end
-end
