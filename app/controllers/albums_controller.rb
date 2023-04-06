@@ -20,7 +20,7 @@ class AlbumsController < ApplicationController
 
     if @album.save
         flash[:notice] = "Album successfully saved!"
-        redirect_to albums_path
+        redirect_to @album
 
     else 
         flash[:notice] = "There was an error creating an album!"
@@ -48,10 +48,12 @@ end
 
     private
     def album_params
-        params.require(:album).permit(:title, :artist, :release_year, :image_path)
+        params.require(:album).permit(:title, :artist, :release_year, :image_path, category_ids: [])
     end
 
     def set_album
         @album = Album.find(params[:id])
     end
 end
+
+

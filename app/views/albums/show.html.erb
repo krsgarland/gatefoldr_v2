@@ -5,5 +5,10 @@
     <%= image_tag @album.image_path, style: "border: 1px solid black" %>
     </div>
 
+<div>
+<% @album.categories.each do |category| %>
+<b style="margin-right: 6px"><%= category.name %></b>
+<% end %>
+
 <%= link_to "Edit", edit_album_path(@album)%>
 <%= button_to "Destroy", @album, method: :delete%>
