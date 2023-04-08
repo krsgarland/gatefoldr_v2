@@ -1,6 +1,7 @@
 class Album < ApplicationRecord
     has_and_belongs_to_many :categories 
-    
+    belongs_to :user
+
     validates :title, presence: true, length: {minimum: 2, maximum: 100}
     validates :artist, presence: true, length: {minimum: 2, maximum: 100}
     validates :release_year, presence: true, length: {minimum: 4, maximum: 4}
