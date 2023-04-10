@@ -1,0 +1,12 @@
+<h1><%= @user.username%>'s Albums</h1>
+
+<% @user.albums.each do |album| %>
+<h2><%= album.title %></h2>
+<h6>Artist: <%= album.artist %></h6>
+<h6>Release Year: <%= album.release_year %></h6>
+<div>
+<%= link_to album_path(album) do %>
+    <%= image_tag album.image_path, style: "border: 1px solid black" %>
+    <% end %>
+</div>
+<% end %>
