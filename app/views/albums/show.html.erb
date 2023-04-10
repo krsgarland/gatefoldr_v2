@@ -17,4 +17,7 @@
 <% end %>
 
 <%= link_to "Edit", edit_album_path(@album)%>
-<%= button_to "Destroy", @album, method: :delete%>
+
+<% if current_user == @album.user %>    
+    <%= button_to "Destroy", @album, method: :delete%>
+<% end %>

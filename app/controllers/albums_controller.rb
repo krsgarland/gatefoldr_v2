@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
     before_action :set_album, only: [:show, :edit, :update, :destroy]
     before_action :require_user 
+    before_action :require_same_user, only: [:destroy]
     #GET - Show all albums
     def index 
         @albums = Album.all
@@ -47,6 +48,18 @@ end
     end
 
     private
+
+    def require_same_user
+        if helpers.current_user != @album.user
+            flash[:notice] = "Unauthorized!"
+            redirect_to helpers.current_user
+        end
+    end
+
+    def set_album
+        @album = Album.find(params[:id])
+    end
+
     def album_params
         params.require(:album).permit(:title, :artist, :release_year, :image_path, category_ids: [])
     end
