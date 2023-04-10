@@ -16,7 +16,7 @@ class AlbumsController < ApplicationController
     end
     #POST - create an album
     def create 
-        @album = Album.new(album_params)
+        @album = helpers.current_user.albums.new(album_params)
 
     if @album.save
         flash[:notice] = "Album successfully saved!"

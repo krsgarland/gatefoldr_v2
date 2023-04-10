@@ -1,4 +1,10 @@
 <h1><%= @album.title %> </h1>
+<% if @album.user %>
+<div>
+<%= link_to "Added by: #{@album.user.username}", @album.user%>
+</div>
+<% end %>
+
 <p><%= @album.artist %> </p>
 <p><%= @album.release_year %> </p>
 <div>
