@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :already_signed_in?
   def new
   end
 
