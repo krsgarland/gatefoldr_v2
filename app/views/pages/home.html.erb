@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Discover New Music!</h2>
+
+<div class="container">
+    <div class="row">
+    <% Album.limit(5).each do |album| %>
+        <div class="col-xs-12 col-md-6 col-lg-4">
+         <div class="card text-center border-info mb-3" style="width: 100%">
+         <%= image_tag album.image_path, class: "card-img=top" %>
+     <div class="card-header">
+    <h5 class="card-title"><%= album.title%></h5>
+    <p class="card-text"><%= album.release_year %></p>
+    </div>
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= album.artist %></li>
+    </ul>
+    <div class="card-footer">
+        <%= link_to "Go to Album", album, class: "btn btn-primary"%>
+        </div>  
+        </div>  
+    </div>
+    <% end %>
+    </div>
+</div>
