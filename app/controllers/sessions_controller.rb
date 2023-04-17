@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
     else
       flash[:notice] = "Login Failed."
       render :new, status: :unprocessable_entity
-      puts "hi"
 
     end
   end
