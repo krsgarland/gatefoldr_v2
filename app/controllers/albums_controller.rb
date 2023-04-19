@@ -66,7 +66,6 @@ end
 
     def set_album
         @album = Album.find(params[:id])
-        puts "hi"
     end
 end
 

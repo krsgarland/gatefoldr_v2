@@ -15,7 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_08_223159) do
     t.string "title"
     t.string "artist"
     t.integer "release_year"
-    t.string "image_path"
+    t.string "image_path", default: "https://upload.wikimedia.org/wikipedia/commons/c/c1/LP_Vinyl_Symbol_Icon.png"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
